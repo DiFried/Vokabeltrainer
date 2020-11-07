@@ -8,7 +8,7 @@ from datetime import date
 
 begriff="Haus"
 sprache= "Deutsch - Englisch"
-version="2.0"
+version="1.0"
 
 def antwort_action():
     entry_text = eingabefeld.get()
