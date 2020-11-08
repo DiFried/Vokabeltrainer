@@ -38,35 +38,50 @@ fenster.geometry("500x200")
 # Den Fenstertitle erstellen
 fenster.title("Vokabeltrainer Deutsch-Englisch - Englisch-Deutsch")
 
-# Label erstellen
+# --------------- Label erstellen -------------------------------
 versions_label = Label(fenster,text="Version:" + version)
 datums_label = Label(fenster, text='Datum: '+aktDatum)
-#uhrzeit_label = Label(fenster, text="Uhrzeit: ")
-frage_label = Label(fenster, text='Frage: '+sprache)
-frage_begriff_label = Label(fenster, text=begriff, fg="red")
-frage_begriff_label["font"] = "Calibri 20 bold"
-
-antwort_label= Label(fenster, text="Deine Antwort:")
+# ----------------------- Vorgabe: Deutsch oder Englisch -----------------
+t1_label = Label(fenster, text='Deutsch', font=' Calibri 15 bold')
+# ----------------------- Antowrt: Deutsch oder Englisch -----------------
+t2_label = Label(fenster, text='Englisch', font=' Calibri 15 bold')
+# ----------------------- Begriff ausgeben -----------------
+t3_label = Label(fenster, text=begriff, fg="red", font=' Calibri 20 bold')
+# ----------------------- Benutzer Eingabe-Feld ------------------------------
 eingabefeld = Entry(fenster, bd=5, width=20)
-richtig_label= Label(fenster)
 
 
-eingabe_button = Button(fenster, text="Klick me", command=antwort_action())
+#t1_label["font"] = "20 bold"
+
+#antwort_label= Label(fenster, text="Deine Antwort:")
+
+richtig_label= Label(fenster, text='')
+
+
+eingabe_button = Button(fenster, text="Eingabe", command=antwort_action())
 exit_button= Button(fenster, text="Beenden ",command=fenster.quit)
-versions_label.grid(row=0, column=0, sticky=W)
-datums_label.grid(row= 0, column=1,sticky=W, padx=50)
+
+
 #uhrzeit_label.grid(row = 0, column=2,padx=30)
-frage_label.grid(row = 2, column= 0,pady=10)
-frage_begriff_label.grid(row=2, column=1,sticky=W, padx=50)
-antwort_label.grid(row = 3, column= 0,sticky=W)
-eingabefeld.grid(row=3, column=1, sticky=W,padx=50)
+
+#frage_begriff_label.grid(row=2, column=1,sticky=W, padx=50)
+#antwort_label.grid(row = 3, column= 0,sticky=W)
 
 
-#frage_begriff_label.grid(row=2, column=0)
 
-eingabe_button.grid(row=6, column=1, pady=10, sticky=W, padx=50)
-exit_button.grid(row= 6, column= 2, sticky=W)
-richtig_label.grid(row=5,column=1, sticky=W, padx=50)
+# -------------- Widgets platzieren ------------------------------
+versions_label.grid(row=0, column=0, sticky=W, padx=10)
+datums_label.grid(row= 0, column=3,sticky=W, padx=10)
+#t1_label.grid(row=1, column=0, pady=10, sticky=W, padx=10)
+t1_label.grid(row=1, column=1, sticky=W)
+t2_label.grid(row=1, column=2, sticky=W)
+t3_label.grid(row=2, column=1, sticky=W)
+eingabefeld.grid(row=2, column=2, sticky=W)
+richtig_label.grid(row=2,column=3, sticky=W, padx=10)
+
+eingabe_button.grid(row=3, column=2, pady=10, sticky=W)
+exit_button.grid(row= 3, column= 3, padx= 10,sticky=W)
+
 
 
 
