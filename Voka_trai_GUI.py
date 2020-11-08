@@ -7,16 +7,20 @@ from tkinter import *
 from datetime import date
 
 begriff="Haus"
+a1="house"
 sprache= "Deutsch - Englisch"
 version="1.0"
 
 def antwort_action():
-    entry_text = eingabefeld.get()
-    if (entry_text == ""):
-        richtig_label.config(text="Antwort ist richtig")
+    print(e1.get())
+    if (e1.get() == a1):
+        antwort='Richtige Antwort.'
+        f1='green'
     else:
-        entry_text = "Antwort ist nicht richtig. "
-        richtig_label.config(text=entry_text)
+        antwort='Falsche Antwort.'
+        f1='red'
+    richtig_label= Label(fenster, text=antwort, fg=f1, font='Calibri, 15 bold').grid(row=2,column=3, sticky=W, padx=10)
+    e1.delete(0,END)
 
 
 
@@ -33,54 +37,36 @@ print(aktDatum)
 
 # Ein Fenster erstellen und Größe definieren
 fenster = Tk()
-fenster.geometry("500x200")
+fenster.geometry("600x200")
 
 # Den Fenstertitle erstellen
 fenster.title("Vokabeltrainer Deutsch-Englisch - Englisch-Deutsch")
 
 # --------------- Label erstellen -------------------------------
-versions_label = Label(fenster,text="Version:" + version)
-datums_label = Label(fenster, text='Datum: '+aktDatum)
+versions_label = Label(fenster,text="Version:" + version).grid(row=0, column=0, sticky=W, padx=10)
+datums_label = Label(fenster, text='Datum: '+aktDatum).grid(row= 0, column=3,sticky=W, padx=10)
 # ----------------------- Vorgabe: Deutsch oder Englisch -----------------
-t1_label = Label(fenster, text='Deutsch', font=' Calibri 15 bold')
+t1_label = Label(fenster, text='Deutsch', font=' Calibri 15 bold').grid(row=1, column=1, sticky=W)
 # ----------------------- Antowrt: Deutsch oder Englisch -----------------
-t2_label = Label(fenster, text='Englisch', font=' Calibri 15 bold')
+t2_label = Label(fenster, text='Englisch', font=' Calibri 15 bold').grid(row=1, column=2, sticky=W)
 # ----------------------- Begriff ausgeben -----------------
-t3_label = Label(fenster, text=begriff, fg="red", font=' Calibri 20 bold')
+t3_label = Label(fenster, text=begriff, fg="red", font=' Calibri 20 bold').grid(row=2, column=1, sticky=W)
 # ----------------------- Benutzer Eingabe-Feld ------------------------------
-eingabefeld = Entry(fenster, bd=5, width=20)
+e1 = Entry(fenster, bd=5, width=20)
+e1.grid(row=2, column=2, sticky=W)
 
-
-#t1_label["font"] = "20 bold"
-
-#antwort_label= Label(fenster, text="Deine Antwort:")
-
-richtig_label= Label(fenster, text='')
-
-
-eingabe_button = Button(fenster, text="Eingabe", command=antwort_action())
-exit_button= Button(fenster, text="Beenden ",command=fenster.quit)
-
-
-#uhrzeit_label.grid(row = 0, column=2,padx=30)
-
-#frage_begriff_label.grid(row=2, column=1,sticky=W, padx=50)
-#antwort_label.grid(row = 3, column= 0,sticky=W)
+#fenster.bind('<Return>', antwort_action())
 
 
 
-# -------------- Widgets platzieren ------------------------------
-versions_label.grid(row=0, column=0, sticky=W, padx=10)
-datums_label.grid(row= 0, column=3,sticky=W, padx=10)
-#t1_label.grid(row=1, column=0, pady=10, sticky=W, padx=10)
-t1_label.grid(row=1, column=1, sticky=W)
-t2_label.grid(row=1, column=2, sticky=W)
-t3_label.grid(row=2, column=1, sticky=W)
-eingabefeld.grid(row=2, column=2, sticky=W)
-richtig_label.grid(row=2,column=3, sticky=W, padx=10)
+# -------------------Button erstellen und platziern -----------------------------------
+Button(fenster, text="Enter", command=antwort_action).grid(row=3, column=2, pady=10, sticky=W)
+Button(fenster, text="Beenden ",command=fenster.quit).grid(row= 3, column= 3, padx= 10,sticky=W)
+fenster.bind('<Return>', antwort_action)
 
-eingabe_button.grid(row=3, column=2, pady=10, sticky=W)
-exit_button.grid(row= 3, column= 3, padx= 10,sticky=W)
+
+
+
 
 
 
