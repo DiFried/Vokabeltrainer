@@ -5,7 +5,7 @@
 
 from tkinter import *
 from datetime import date
-from functools import partial
+
 
 
 begriff="Haus"
@@ -58,8 +58,7 @@ e1 = Entry(fenster, bd=5, width=20)
 e1.grid(row=2, column=2, sticky=W)
 # ----------------Cursor im Textfeld positionieren --------------------------------------
 e1.focus_set()
-#fenster.bind('<Return>', antwort_action())
-#button_1.bind("<Button-1>", partial(printInput, name=name))
+
 
 
 # -------------------Button erstellen und platziern -----------------------------------
