@@ -5,13 +5,15 @@
 
 from tkinter import *
 from datetime import date
+from functools import partial
+
 
 begriff="Haus"
 a1="house"
 sprache= "Deutsch - Englisch"
 version="1.0"
 
-def antwort_action():
+def antwort_action(event):
     print(e1.get())
     if (e1.get() == a1):
         antwort='Richtige Antwort.'
@@ -54,15 +56,17 @@ t3_label = Label(fenster, text=begriff, fg="red", font=' Calibri 20 bold').grid(
 # ----------------------- Benutzer Eingabe-Feld ------------------------------
 e1 = Entry(fenster, bd=5, width=20)
 e1.grid(row=2, column=2, sticky=W)
-
+# ----------------Cursor im Textfeld positionieren --------------------------------------
+e1.focus_set()
 #fenster.bind('<Return>', antwort_action())
-
+#button_1.bind("<Button-1>", partial(printInput, name=name))
 
 
 # -------------------Button erstellen und platziern -----------------------------------
 Button(fenster, text="Enter", command=antwort_action).grid(row=3, column=2, pady=10, sticky=W)
 Button(fenster, text="Beenden ",command=fenster.quit).grid(row= 3, column= 3, padx= 10,sticky=W)
 fenster.bind('<Return>', antwort_action)
+
 
 
 
