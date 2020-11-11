@@ -13,7 +13,7 @@ a1="house"
 sprache= "Deutsch - Englisch"
 version="1.0"
 
-def antwort_action(event):
+def antwort_action(event=None):
     print(e1.get())
     if (e1.get() == a1):
         antwort='Richtige Antwort.'
@@ -64,7 +64,7 @@ e1.focus_set()
 # -------------------Button erstellen und platziern -----------------------------------
 Button(fenster, text="Enter", command=antwort_action).grid(row=3, column=2, pady=10, sticky=W)
 Button(fenster, text="Beenden ",command=fenster.quit).grid(row= 3, column= 3, padx= 10,sticky=W)
-fenster.bind('<Return>', antwort_action)
+fenster.bind('<Alt-q>', antwort_action)
 
 
 
